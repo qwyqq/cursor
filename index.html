@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>键位调试台</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <div class="mark" aria-hidden="true"></div>
+      <div>
+        <h1>键位调试台</h1>
+        <p>ANSI 104 全尺寸 · 逻辑矩阵 6×23</p>
+      </div>
+    </div>
+    <div class="hidbox">
+      <div class="report">
+        <span class="dot" id="hidDot"></span>
+        <code id="reportHex">未连接 · 直接按键就能看高亮</code>
+      </div>
+      <button id="hidBtn" type="button">连接键盘</button>
+    </div>
+  </header>
+  <div id="focusBanner" class="banner" hidden>页面不在焦点，键盘高亮已暂停。点一下页面继续。</div>
+  <main class="layout">
+    <section class="stage">
+      <div class="toolbar">
+        <div class="seg" role="tablist" aria-label="视图">
+          <button type="button" id="viewBoard" class="on" data-view="board">键位</button>
+          <button type="button" id="viewMatrix" data-view="matrix">矩阵</button>
+        </div>
+        <div class="seg layers" role="tablist" aria-label="层">
+          <button type="button" class="on" data-layer="base">Base</button>
+          <button type="button" data-layer="fn">Fn</button>
+          <button type="button" data-layer="fn2">Fn2</button>
+        </div>
+        <label class="check"><input type="checkbox" id="showCoord" /> 坐标</label>
+        <label class="check"><input type="checkbox" id="showLed" /> 灯序</label>
+        <p class="stats" id="stats">按住 0</p>
+      </div>
+      <div id="boardView">
+        <div class="plate">
+          <div class="deck" id="deck"></div>
+        </div>
+      </div>
+      <div id="matrixView" hidden>
+        <p class="hint">行对应键盘的六行，列是从左到右、按键组留空后的序号。点一个格子可以改行列，改成你原理图上的真实矩阵。</p>
+        <div class="matrix-scroll">
+          <div id="matrix"></div>
+        </div>
+      </div>
+      <div class="loghead">
+        <h2>按键记录</h2>
+        <span>松开短于 15ms 记为抖动</span>
+        <button type="button" id="clearLog">清空</button>
+      </div>
+      <div class="log" id="log"></div>
+    </section>
+    <aside class="side" id="side"></aside>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
