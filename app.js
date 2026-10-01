@@ -537,7 +537,8 @@ function boot() {
       crossR.add(pos.r);
       crossC.add(pos.c);
     });
-    matrixEl.style.gridTemplateColumns = "32px repeat(" + size.cols + ", minmax(30px, 1fr))";
+    matrixEl.classList.add("matrix");
+    matrixEl.style.gridTemplateColumns = "32px repeat(" + size.cols + ", minmax(34px, 1fr))";
     const parts = ['<div class="mh"></div>'];
     for (let c = 0; c < size.cols; c += 1) parts.push('<div class="mh">' + c + "</div>");
     for (let r = 0; r < size.rows; r += 1) {
